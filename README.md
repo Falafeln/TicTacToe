@@ -1,2 +1,0 @@
-# TicTacToe i master
-Gruppuppgift 
