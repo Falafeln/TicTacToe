@@ -8,9 +8,4 @@ Alex was here
 =======
 hejsan hejsan!
 Vi testar om det fungerar
-<<<<<<< HEAD
-
-
-apa
-=======
 
