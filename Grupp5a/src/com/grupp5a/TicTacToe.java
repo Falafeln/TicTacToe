@@ -7,82 +7,83 @@ import javax.swing.*;
 
 //   VIKTIGA SAKER ATT KOLLA UPP!
 
-/*************************************
- * Det saknas fï¿½ljande metoder;      *
- *   - om det blir lika.             *
- *   - Reset om nï¿½gon vunnit/lika.   *
- *************************************/
+/***************************************************
+ * Det saknas foljande:                            *
+ *   - Andra färger o fonts                        *
+ *   - Ev. lagga in en dator som spelare           *
+ *   - klickar man för snabbt missas forsta rundan *
+ **************************************************/
 
 
 
 public class TicTacToe implements ActionListener {
 
 	Random random = new Random();
-	JFrame frame = new JFrame();
-	JPanel title_panel = new JPanel();
-	JPanel button_panel = new JPanel();
-	JLabel textfield = new JLabel();
-	JButton[] button = new JButton[9];
-	boolean player1_turn;
+	JFrame ram = new JFrame();
+	JPanel titelPanel = new JPanel();
+	JPanel knappPanel = new JPanel();
+	JLabel textFalt = new JLabel();
+	JButton[] knapp = new JButton[9];
+	boolean spelare1_tur;
 
 	TicTacToe() {
 
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(800, 800);
-		frame.getContentPane().setBackground(new Color(50, 50, 50));
-		frame.setLayout(new BorderLayout());
-		frame.setVisible(true);
+		ram.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		ram.setSize(800, 800);
+		ram.getContentPane().setBackground(new Color(50, 50, 50));
+		ram.setLayout(new BorderLayout());
+		ram.setVisible(true);
 
-		textfield.setBackground(new Color(25, 25, 25));
-		textfield.setForeground(new Color(25, 255, 0));
-		textfield.setFont(new Font("Ink Free", Font.BOLD, 75));
-		textfield.setHorizontalAlignment(JLabel.CENTER);
-		textfield.setText("Tic-Tac-Toe");
-		textfield.setOpaque(true);
+		textFalt.setBackground(new Color(25, 25, 25));
+		textFalt.setForeground(new Color(25, 255, 0));
+		textFalt.setFont(new Font("Ink Free", Font.BOLD, 75));
+		textFalt.setHorizontalAlignment(JLabel.CENTER);
+		textFalt.setText("Tic-Tac-Toe");
+		textFalt.setOpaque(true);
 
-		title_panel.setLayout(new BorderLayout());
-		title_panel.setBounds(0, 0, 800, 100);
+		titelPanel.setLayout(new BorderLayout());
+		titelPanel.setBounds(0, 0, 800, 100);
 
-		button_panel.setLayout(new GridLayout(3, 3));
-		button_panel.setBackground(new Color(150, 150, 150));
+		knappPanel.setLayout(new GridLayout(3, 3));
+		knappPanel.setBackground(new Color(150, 150, 150));
 
 		for (int i = 0; i < 9; i++) {
-			button[i] = new JButton();
-			button_panel.add(button[i]);
-			button[i].setFont(new Font("MV Boli", Font.BOLD, 120));
-			button[i].setFocusable(false);
-			button[i].addActionListener(this);
+			knapp[i] = new JButton();
+			knappPanel.add(knapp[i]);
+			knapp[i].setFont(new Font("MV Boli", Font.BOLD, 120));
+			knapp[i].setFocusable(false);
+			knapp[i].addActionListener(this);
 		}
 
-		title_panel.add(textfield);
-		frame.add(title_panel, BorderLayout.NORTH);
-		frame.add(button_panel);
+		titelPanel.add(textFalt);
+		ram.add(titelPanel, BorderLayout.NORTH);
+		ram.add(knappPanel);
 
-		firstTurn();
+		forstaRundan();
 
 	}
 
 	public void actionPerformed(ActionEvent e) {
 
 		for (int i = 0; i < 9; i++) {
-			if (e.getSource() == button[i]) {
-				if (player1_turn) {
-					if (button[i].getText() == "") {
-						button[i].setForeground(new Color(255, 0, 0));
-						button[i].setText("X");
-						player1_turn = false;
-						textfield.setText("O turn");
-						check();
-						draw();
+			if (e.getSource() == knapp[i]) {
+				if (spelare1_tur) {
+					if (knapp[i].getText() == "") {
+						knapp[i].setForeground(new Color(255, 0, 0));
+						knapp[i].setText("X");
+						spelare1_tur = false;
+						textFalt.setText("O tur");
+						kontrollera();
+						lika();
 					}
 				} else {
-					if (button[i].getText() == "") {
-						button[i].setForeground(new Color(0, 0, 255));
-						button[i].setText("O");
-						player1_turn = true;
-						textfield.setText("X turn");
-						check();
-						draw();
+					if (knapp[i].getText() == "") {
+						knapp[i].setForeground(new Color(0, 0, 255));
+						knapp[i].setText("O");
+						spelare1_tur = true;
+						textFalt.setText("X tur");
+						kontrollera();
+						lika();
 					}
 				}
 			}
@@ -90,7 +91,7 @@ public class TicTacToe implements ActionListener {
 
 	}
 
-	public void firstTurn() {
+	public void forstaRundan() {
 
 		try {
 			Thread.sleep(2000);
@@ -99,161 +100,161 @@ public class TicTacToe implements ActionListener {
 		}
 
 		if (random.nextInt(2) == 0) {
-			player1_turn = true;
-			textfield.setText("X turn");
+			spelare1_tur = true;
+			textFalt.setText("X tur");
 
 		} else {
-			player1_turn = false;
-			textfield.setText("O turn");
+			spelare1_tur = false;
+			textFalt.setText("O tur");
 		}
 
 	}
 
-	public void check() {
+	public void kontrollera() {
 		// Check X win conditions
-		if ((button[0].getText() == "X") && (button[1].getText() == "X") && (button[2].getText() == "X")) {
-			xWins(0, 1, 2);
+		if ((knapp[0].getText() == "X") && (knapp[1].getText() == "X") && (knapp[2].getText() == "X")) {
+			xVinner(0, 1, 2);
 
 		}
 		
-		if ((button[3].getText() == "X") && (button[4].getText() == "X") && (button[5].getText() == "X")) {
-			xWins(3, 4, 5);
+		if ((knapp[3].getText() == "X") && (knapp[4].getText() == "X") && (knapp[5].getText() == "X")) {
+			xVinner(3, 4, 5);
 
 		}
-		if((button[6].getText()=="X") &&
-				(button[7].getText()=="X") &&
-				(button[8].getText()=="X")
+		if((knapp[6].getText()=="X") &&
+				(knapp[7].getText()=="X") &&
+				(knapp[8].getText()=="X")
 					) {
-				xWins(6,7,8);
+				xVinner(6,7,8);
 					
 				}
-		if((button[0].getText()=="X") &&
-				(button[3].getText()=="X") &&
-				(button[6].getText()=="X")
+		if((knapp[0].getText()=="X") &&
+				(knapp[3].getText()=="X") &&
+				(knapp[6].getText()=="X")
 					) {
-				xWins(0,3,6);
+				xVinner(0,3,6);
 					
 				}
-		if((button[1].getText()=="X") &&
-				(button[4].getText()=="X") &&
-				(button[7].getText()=="X")
+		if((knapp[1].getText()=="X") &&
+				(knapp[4].getText()=="X") &&
+				(knapp[7].getText()=="X")
 					) {
-				xWins(1,4,7);
+				xVinner(1,4,7);
 					
 				}
-		if((button[2].getText()=="X") &&
-				(button[5].getText()=="X") &&
-				(button[8].getText()=="X")
+		if((knapp[2].getText()=="X") &&
+				(knapp[5].getText()=="X") &&
+				(knapp[8].getText()=="X")
 					) {
-				xWins(2,5,8);
+				xVinner(2,5,8);
 					
 				}
-		if((button[0].getText()=="X") &&
-				(button[4].getText()=="X") &&
-				(button[8].getText()=="X")
+		if((knapp[0].getText()=="X") &&
+				(knapp[4].getText()=="X") &&
+				(knapp[8].getText()=="X")
 					) {
-				xWins(0,4,8);
+				xVinner(0,4,8);
 					
 				}
-		if((button[2].getText()=="X") &&
-				(button[4].getText()=="X") &&
-				(button[6].getText()=="X")
+		if((knapp[2].getText()=="X") &&
+				(knapp[4].getText()=="X") &&
+				(knapp[6].getText()=="X")
 					) {
-				xWins(2,4,6);
+				xVinner(2,4,6);
 					
 				}
 
 		// Check O win conditions
-		if ((button[0].getText() == "O") && (button[1].getText() == "O") && (button[2].getText() == "O")) {
-			oWins(0, 1, 2);
+		if ((knapp[0].getText() == "O") && (knapp[1].getText() == "O") && (knapp[2].getText() == "O")) {
+			oVinner(0, 1, 2);
 
 		}
 		
-		if ((button[3].getText() == "O") && (button[4].getText() == "O") && (button[5].getText() == "O")) {
-			oWins(3, 4, 5);
+		if ((knapp[3].getText() == "O") && (knapp[4].getText() == "O") && (knapp[5].getText() == "O")) {
+			oVinner(3, 4, 5);
 
 		}
-		if((button[6].getText()=="O") &&
-				(button[7].getText()=="O") &&
-				(button[8].getText()=="O")
+		if((knapp[6].getText()=="O") &&
+				(knapp[7].getText()=="O") &&
+				(knapp[8].getText()=="O")
 					) {
-				oWins(6,7,8);
+				oVinner(6,7,8);
 					
 				}
-		if((button[0].getText()=="O") &&
-				(button[3].getText()=="O") &&
-				(button[6].getText()=="O")
+		if((knapp[0].getText()=="O") &&
+				(knapp[3].getText()=="O") &&
+				(knapp[6].getText()=="O")
 					) {
-				oWins(0,3,6);
+				oVinner(0,3,6);
 					
 				}
-		if((button[1].getText()=="O") &&
-				(button[4].getText()=="O") &&
-				(button[7].getText()=="O")
+		if((knapp[1].getText()=="O") &&
+				(knapp[4].getText()=="O") &&
+				(knapp[7].getText()=="O")
 					) {
-				oWins(1,4,7);
+				oVinner(1,4,7);
 					
 				}
-		if((button[2].getText()=="O") &&
-				(button[5].getText()=="O") &&
-				(button[8].getText()=="O")
+		if((knapp[2].getText()=="O") &&
+				(knapp[5].getText()=="O") &&
+				(knapp[8].getText()=="O")
 					) {
-				oWins(2,5,8);
+				oVinner(2,5,8);
 					
 				}
-		if((button[0].getText()=="O") &&
-				(button[4].getText()=="O") &&
-				(button[8].getText()=="O")
+		if((knapp[0].getText()=="O") &&
+				(knapp[4].getText()=="O") &&
+				(knapp[8].getText()=="O")
 					) {
-				oWins(0,4,8);
+				oVinner(0,4,8);
 					
 				}
-		if((button[2].getText()=="O") &&
-				(button[4].getText()=="O") &&
-				(button[6].getText()=="O")
+		if((knapp[2].getText()=="O") &&
+				(knapp[4].getText()=="O") &&
+				(knapp[6].getText()=="O")
 					) {
-				oWins(2,4,6);
+				oVinner(2,4,6);
 					
 				}
 
 	}
 
-	public void xWins(int a, int b, int c) {
-		button[a].setBackground(Color.GREEN);
-		button[b].setBackground(Color.GREEN);
-		button[c].setBackground(Color.GREEN);
-		
-		for(int i=0;i<9;i++) {
-			button[i].setEnabled(false);
-		}
-		textfield.setText("X wins");
-
-	}
-
-	public void oWins(int a, int b, int c) {
-		button[a].setBackground(Color.GREEN);
-		button[b].setBackground(Color.GREEN);
-		button[c].setBackground(Color.GREEN);
+	public void xVinner(int a, int b, int c) {
+		knapp[a].setBackground(Color.GREEN);
+		knapp[b].setBackground(Color.GREEN);
+		knapp[c].setBackground(Color.GREEN);
 		
 		for(int i=0;i<9;i++) {
-			button[i].setEnabled(false);
+			knapp[i].setEnabled(false);
 		}
-		textfield.setText("O wins");
+		textFalt.setText("X vinner!");
 
 	}
-	public void draw() {
-		int draw = 0;
+
+	public void oVinner(int a, int b, int c) {
+		knapp[a].setBackground(Color.GREEN);
+		knapp[b].setBackground(Color.GREEN);
+		knapp[c].setBackground(Color.GREEN);
+		
+		for(int i=0;i<9;i++) {
+			knapp[i].setEnabled(false);
+		}
+		textFalt.setText("O vinner!");
+
+	}
+	public void lika() {
+		int lika = 0;
 		for (int i = 0; i < 9; i++) {
-			if (button[i].getText() == "X" || button[i].getText() == "O") {
-				draw++;
+			if (knapp[i].getText() == "X" || knapp[i].getText() == "O") {
+				lika++;
 			}
 		}
-		if (draw == 9 && textfield.getText() != "O wins" && textfield.getText() != "X wins") {
+		if (lika == 9 && textFalt.getText() != "O vinner!" && textFalt.getText() != "X vinner!") {
 			for (int i = 0; i < 9; i++) {
-				button[i].setBackground(Color.RED);
-				button[i].setEnabled(false);
+				knapp[i].setBackground(Color.RED);
+				knapp[i].setEnabled(false);
 			}
-			textfield.setText("DRAW");
+			textFalt.setText("Det blev lika!");
 		}
 	}
 
