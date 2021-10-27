@@ -8,9 +8,9 @@ import javax.swing.*;
 //   VIKTIGA SAKER ATT KOLLA UPP!
 
 /*************************************
- * Det saknas följande metoder;      *
+ * Det saknas fï¿½ljande metoder;      *
  *   - om det blir lika.             *
- *   - Reset om någon vunnit/lika.   *
+ *   - Reset om nï¿½gon vunnit/lika.   *
  *************************************/
 
 
@@ -73,6 +73,7 @@ public class TicTacToe implements ActionListener {
 						player1_turn = false;
 						textfield.setText("O turn");
 						check();
+						draw();
 					}
 				} else {
 					if (button[i].getText() == "") {
@@ -81,6 +82,7 @@ public class TicTacToe implements ActionListener {
 						player1_turn = true;
 						textfield.setText("X turn");
 						check();
+						draw();
 					}
 				}
 			}
@@ -238,6 +240,21 @@ public class TicTacToe implements ActionListener {
 		}
 		textfield.setText("O wins");
 
+	}
+	public void draw() {
+		int draw = 0;
+		for (int i = 0; i < 9; i++) {
+			if (button[i].getText() == "X" || button[i].getText() == "O") {
+				draw++;
+			}
+		}
+		if (draw == 9 && textfield.getText() != "O wins" && textfield.getText() != "X wins") {
+			for (int i = 0; i < 9; i++) {
+				button[i].setBackground(Color.RED);
+				button[i].setEnabled(false);
+			}
+			textfield.setText("DRAW");
+		}
 	}
 
 }
