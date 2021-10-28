@@ -1,11 +1,4 @@
 # TicTacToe
-Gruppuppgift 
-
-<<<<<<< HEAD
-hej hej
-
-Alex was here
-=======
-hejsan hejsan!
-Vi testar om det fungerar
+## Gruppuppgift
+grupp uppgift av spelet TicTacToe 
 
