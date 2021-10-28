@@ -7,12 +7,13 @@ import javax.swing.*;
 
 //   VIKTIGA SAKER ATT KOLLA UPP!
 
-/***************************************************
- * Det saknas foljande:                            *
- *   - Andra färger o fonts                        *
- *   - Ev. lagga in en dator som spelare           *
- *   - klickar man för snabbt missas forsta rundan *
- **************************************************/
+/****************************************************
+ * Det saknas foljande:                             *
+ *   - Andra farger o fonts                         *
+ *   - Ev. lagga in en dator som spelare            *
+ *   - klickar man för snabbt missas forsta rundan  *
+ *   - Skriv in kommentarer som forklarar varje steg*
+ ***************************************************/
 
 
 
