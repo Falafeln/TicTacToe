@@ -94,7 +94,7 @@ public class TicTacToe implements ActionListener {
 						knapp[i].setForeground(new Color(255, 0, 0));
 						knapp[i].setText("X");
 						spelare1_tur = false;
-						textFalt.setText("Spelare O, det ‰r din tur!");
+						textFalt.setText("Spelare O, det ÔøΩr din tur!");
 						kontrollera();
 						lika();
 					}
@@ -103,7 +103,7 @@ public class TicTacToe implements ActionListener {
 						knapp[i].setForeground(new Color(0, 0, 255));
 						knapp[i].setText("O");
 						spelare1_tur = true;
-						textFalt.setText("Spelare X, det ‰r din tur");
+						textFalt.setText("Spelare X, det ÔøΩr din tur");
 						kontrollera();
 						lika();
 					}
@@ -116,7 +116,9 @@ public class TicTacToe implements ActionListener {
 	public void forstaRundan() {
 		
 		// Tar fram vem som f√•r b√∂rja, anv√§nder oss av Random.
-		
+		for (int i = 0; i < 9; i++) {
+			knapp[i].setEnabled(false);
+		}
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
@@ -126,12 +128,18 @@ public class TicTacToe implements ActionListener {
 		// Har en .sleep s√• man hinner se vad det √§r man spelar innan vi anger vilken spelare som b√∂rjar.
 
 		if (random.nextInt(2) == 0) {
+			for (int i = 0; i < 9; i++) {
+				knapp[i].setEnabled(true);
+			}
 			spelare1_tur = true;
-			textFalt.setText("Spelare X, det ‰r din tur!");
+			textFalt.setText("Spelare X, det ÔøΩr din tur!");
 
 		} else {
+			for (int i = 0; i < 9; i++) {
+				knapp[i].setEnabled(true);
+			}
 			spelare1_tur = false;
-			textFalt.setText("Spelare O, det ‰r din tur!");
+			textFalt.setText("Spelare O, det ÔøΩr din tur!");
 		}
 
 	}
