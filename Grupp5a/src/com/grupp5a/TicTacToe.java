@@ -261,9 +261,9 @@ public class TicTacToe implements ActionListener {
 		
 		// Om X har vunnit så byter vi färg på den/dom vinnande raderna så man lätt ser vart spelarn har vunnit.
 		
-		knapp[a].setBackground(Color.GREEN);
-		knapp[b].setBackground(Color.GREEN);
-		knapp[c].setBackground(Color.GREEN);
+		knapp[a].setBackground(new Color(102,255,102));
+		knapp[b].setBackground(new Color(102,255,102));
+		knapp[c].setBackground(new Color(102,255,102));
 		
 		for(int i=0;i<9;i++) {
 			knapp[i].setEnabled(false);
@@ -276,9 +276,9 @@ public class TicTacToe implements ActionListener {
 		
 		// Om O har vunnit så byter vi färg på den/dom vinnande raderna så man lätt ser vart spelarn har vunnit.
 		
-		knapp[a].setBackground(Color.GREEN);
-		knapp[b].setBackground(Color.GREEN);
-		knapp[c].setBackground(Color.GREEN);
+		knapp[a].setBackground(new Color(102,255,102));
+		knapp[b].setBackground(new Color(102,255,102));
+		knapp[c].setBackground(new Color(102,255,102));
 		
 		for(int i=0;i<9;i++) {
 			knapp[i].setEnabled(false);
@@ -299,7 +299,7 @@ public class TicTacToe implements ActionListener {
 		}
 		if (lika == 9 && textFalt.getText() != "O vinner!" && textFalt.getText() != "X vinner!") {
 			for (int i = 0; i < 9; i++) {
-				knapp[i].setBackground(Color.RED);
+				knapp[i].setBackground(new Color(153,0,0));
 				knapp[i].setEnabled(false);
 			}
 			textFalt.setText("Det blev lika!");
