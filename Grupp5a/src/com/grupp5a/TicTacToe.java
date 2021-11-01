@@ -43,7 +43,7 @@ public class TicTacToe implements ActionListener {
 
 		textFalt.setBackground(new Color(25, 25, 25));
 		textFalt.setForeground(new Color(25, 255, 0));
-		textFalt.setFont(new Font("Ink Free", Font.BOLD, 75));
+		textFalt.setFont(new Font("Elephant", Font.BOLD, 50));
 		textFalt.setHorizontalAlignment(JLabel.CENTER);
 		textFalt.setText("Tic-Tac-Toe");
 		textFalt.setOpaque(true);
@@ -63,7 +63,7 @@ public class TicTacToe implements ActionListener {
 		for (int i = 0; i < 9; i++) {
 			knapp[i] = new JButton();
 			knappPanel.add(knapp[i]);
-			knapp[i].setFont(new Font("MV Boli", Font.BOLD, 120));
+			knapp[i].setFont(new Font("Chiller", Font.BOLD, 120));
 			knapp[i].setFocusable(false);
 			knapp[i].addActionListener(this);
 		}
@@ -94,7 +94,7 @@ public class TicTacToe implements ActionListener {
 						knapp[i].setForeground(new Color(255, 0, 0));
 						knapp[i].setText("X");
 						spelare1_tur = false;
-						textFalt.setText("O tur");
+						textFalt.setText("Spelare O, det är din tur!");
 						kontrollera();
 						lika();
 					}
@@ -103,7 +103,7 @@ public class TicTacToe implements ActionListener {
 						knapp[i].setForeground(new Color(0, 0, 255));
 						knapp[i].setText("O");
 						spelare1_tur = true;
-						textFalt.setText("X tur");
+						textFalt.setText("Spelare X, det är din tur");
 						kontrollera();
 						lika();
 					}
@@ -127,11 +127,11 @@ public class TicTacToe implements ActionListener {
 
 		if (random.nextInt(2) == 0) {
 			spelare1_tur = true;
-			textFalt.setText("X tur");
+			textFalt.setText("Spelare X, det är din tur!");
 
 		} else {
 			spelare1_tur = false;
-			textFalt.setText("O tur");
+			textFalt.setText("Spelare O, det är din tur!");
 		}
 
 	}
