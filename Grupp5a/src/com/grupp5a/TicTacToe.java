@@ -11,14 +11,14 @@ import javax.swing.*;
  * Det saknas foljande:                             *
  *   - Andra farger o fonts                         *
  *   - Ev. lagga in en dator som spelare            *
- *   - klickar man f�r snabbt missas forsta rundan  *
+ *   - klickar man f�r snabbt missas forsta rundan  *
  *   - Skriv in kommentarer som forklarar varje steg*
  ***************************************************/
 
 
 
 public class TicTacToe implements ActionListener {
-
+	
 	Random random = new Random();
 	JFrame ram = new JFrame();
 	JPanel titelPanel = new JPanel();
@@ -27,13 +27,19 @@ public class TicTacToe implements ActionListener {
 	JButton[] knapp = new JButton[9];
 	boolean spelare1_tur;
 
+	// Alla variabler som används udner programets körning
+	
 	TicTacToe() {
+		
+		// Tillverkar spelbrädan 
 
 		ram.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ram.setSize(800, 800);
 		ram.getContentPane().setBackground(new Color(50, 50, 50));
 		ram.setLayout(new BorderLayout());
 		ram.setVisible(true);
+		
+		// Gjort ramen för Jframe
 
 		textFalt.setBackground(new Color(25, 25, 25));
 		textFalt.setForeground(new Color(25, 255, 0));
@@ -41,12 +47,18 @@ public class TicTacToe implements ActionListener {
 		textFalt.setHorizontalAlignment(JLabel.CENTER);
 		textFalt.setText("Tic-Tac-Toe");
 		textFalt.setOpaque(true);
+		
+		// Gjort textfältet för spelet
 
 		titelPanel.setLayout(new BorderLayout());
 		titelPanel.setBounds(0, 0, 800, 100);
+		
+		// Gjort rutan för textrutan
 
 		knappPanel.setLayout(new GridLayout(3, 3));
 		knappPanel.setBackground(new Color(150, 150, 150));
+			
+		// Gjort knapprutan, använde GridLayout för att få ett spelfält som är 3x3
 
 		for (int i = 0; i < 9; i++) {
 			knapp[i] = new JButton();
@@ -55,16 +67,25 @@ public class TicTacToe implements ActionListener {
 			knapp[i].setFocusable(false);
 			knapp[i].addActionListener(this);
 		}
+		
+		// Använde oss av for-lop för att göra 9 knappar
 
 		titelPanel.add(textFalt);
 		ram.add(titelPanel, BorderLayout.NORTH);
 		ram.add(knappPanel);
+		
+		// Lägger in allt i Jframe, använde BorderLayout.NORTH för att få titelpanelen ovanförknapparna 
 
 		forstaRundan();
 
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		
+		/* Använder oss av ActionLisener för att se vilken knapp användarna trycker på.
+ 	   	*  Lopar igenom knapparna för att ta fram vilken spelare det var som tryckte och på vilken knapp dom tryckte på.
+		*  Kollar även så att ingen spelare redan har lagt på rutan som användaren trycker på.
+		*  Använder även blooean spelare1_tur för att byta mellan spelare 1 och 2 omgång. */
 
 		for (int i = 0; i < 9; i++) {
 			if (e.getSource() == knapp[i]) {
@@ -93,12 +114,16 @@ public class TicTacToe implements ActionListener {
 	}
 
 	public void forstaRundan() {
-
+		
+		// Tar fram vem som får börja, använder oss av Random.
+		
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+		
+		// Har en .sleep så man hinner se vad det är man spelar innan vi anger vilken spelare som börjar.
 
 		if (random.nextInt(2) == 0) {
 			spelare1_tur = true;
@@ -112,7 +137,10 @@ public class TicTacToe implements ActionListener {
 	}
 
 	public void kontrollera() {
-		// Check X win conditions
+		
+		// Kollar om nån har vunnit.
+		// Använder oss av getText för att få Char för varje ruta och kollar på så sätt om nån av spelarna har vunnit.
+		
 		if ((knapp[0].getText() == "X") && (knapp[1].getText() == "X") && (knapp[2].getText() == "X")) {
 			xVinner(0, 1, 2);
 
@@ -164,8 +192,8 @@ public class TicTacToe implements ActionListener {
 				xVinner(2,4,6);
 					
 				}
+		// kollat om X har vunnit, forstätter med O.
 
-		// Check O win conditions
 		if ((knapp[0].getText() == "O") && (knapp[1].getText() == "O") && (knapp[2].getText() == "O")) {
 			oVinner(0, 1, 2);
 
@@ -217,10 +245,14 @@ public class TicTacToe implements ActionListener {
 				oVinner(2,4,6);
 					
 				}
+		// kollat om O har vunnit.
 
 	}
 
 	public void xVinner(int a, int b, int c) {
+		
+		// Om X har vunnit så byter vi färg på den/dom vinnande raderna så man lätt ser vart spelarn har vunnit.
+		
 		knapp[a].setBackground(Color.GREEN);
 		knapp[b].setBackground(Color.GREEN);
 		knapp[c].setBackground(Color.GREEN);
@@ -233,6 +265,9 @@ public class TicTacToe implements ActionListener {
 	}
 
 	public void oVinner(int a, int b, int c) {
+		
+		// Om O har vunnit så byter vi färg på den/dom vinnande raderna så man lätt ser vart spelarn har vunnit.
+		
 		knapp[a].setBackground(Color.GREEN);
 		knapp[b].setBackground(Color.GREEN);
 		knapp[c].setBackground(Color.GREEN);
@@ -244,6 +279,10 @@ public class TicTacToe implements ActionListener {
 
 	}
 	public void lika() {
+		
+		// Lopar igenom alla knappar för att se om dom är använda.
+		// Om alla knappar är använda och ingen har vunnit så Skriver vi ut att spelet blev lika
+		
 		int lika = 0;
 		for (int i = 0; i < 9; i++) {
 			if (knapp[i].getText() == "X" || knapp[i].getText() == "O") {
