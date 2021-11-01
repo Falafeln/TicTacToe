@@ -5,15 +5,7 @@ import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
 
-//   VIKTIGA SAKER ATT KOLLA UPP!
 
-/****************************************************
- * Det saknas foljande:                             *
- *   - Andra farger o fonts                         *
- *   - Ev. lagga in en dator som spelare            *
- *   - klickar man f�r snabbt missas forsta rundan  *
- *   - Skriv in kommentarer som forklarar varje steg*
- ***************************************************/
 
 
 
@@ -42,7 +34,7 @@ public class TicTacToe implements ActionListener {
 		// Gjort ramen för Jframe
 
 		textFalt.setBackground(new Color(25, 25, 25));
-		textFalt.setForeground(new Color(25, 255, 0));
+		textFalt.setForeground(new Color(255, 153, 0));
 		textFalt.setFont(new Font("Elephant", Font.BOLD, 50));
 		textFalt.setHorizontalAlignment(JLabel.CENTER);
 		textFalt.setText("Tic-Tac-Toe");
@@ -56,7 +48,7 @@ public class TicTacToe implements ActionListener {
 		// Gjort rutan för textrutan
 
 		knappPanel.setLayout(new GridLayout(3, 3));
-		knappPanel.setBackground(new Color(150, 150, 150));
+		knappPanel.setBackground(new Color(204, 204, 204));
 			
 		// Gjort knapprutan, använde GridLayout för att få ett spelfält som är 3x3
 
@@ -66,6 +58,7 @@ public class TicTacToe implements ActionListener {
 			knapp[i].setFont(new Font("Chiller", Font.BOLD, 150));
 			knapp[i].setFocusable(false);
 			knapp[i].addActionListener(this);
+			knapp[i].setBackground(new Color (40,45,45));
 		}
 		
 		// Använde oss av for-lop för att göra 9 knappar
@@ -91,19 +84,19 @@ public class TicTacToe implements ActionListener {
 			if (e.getSource() == knapp[i]) {
 				if (spelare1_tur) {
 					if (knapp[i].getText() == "") {
-						knapp[i].setForeground(new Color(255, 0, 0));
+						knapp[i].setForeground(new Color(102, 0, 153));
 						knapp[i].setText("X");
 						spelare1_tur = false;
-						textFalt.setText("Spelare O, det �r din tur!");
+						textFalt.setText("Spelare O, det �r din tur!");
 						kontrollera();
 						lika();
 					}
 				} else {
 					if (knapp[i].getText() == "") {
-						knapp[i].setForeground(new Color(0, 0, 255));
+						knapp[i].setForeground(new Color(51, 204, 255));
 						knapp[i].setText("O");
 						spelare1_tur = true;
-						textFalt.setText("Spelare X, det �r din tur");
+						textFalt.setText("Spelare X, det �r din tur!");
 						kontrollera();
 						lika();
 					}
@@ -132,14 +125,14 @@ public class TicTacToe implements ActionListener {
 				knapp[i].setEnabled(true);
 			}
 			spelare1_tur = true;
-			textFalt.setText("Spelare X, det �r din tur!");
+			textFalt.setText("Spelare X, det �r din tur!");
 
 		} else {
 			for (int i = 0; i < 9; i++) {
 				knapp[i].setEnabled(true);
 			}
 			spelare1_tur = false;
-			textFalt.setText("Spelare O, det �r din tur!");
+			textFalt.setText("Spelare O, det �r din tur!");
 		}
 
 	}
