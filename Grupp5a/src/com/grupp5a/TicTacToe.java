@@ -61,12 +61,12 @@ public class TicTacToe implements ActionListener {
 			knapp[i].setBackground(new Color (40,45,45));
 		}
 		
-<<<<<<< HEAD
+
 		// Använde oss av for-lop för att göra 9 knappar
-=======
+
 		// AnvÃ¤nde oss av for-lop fÃ¶r att gÃ¶ra 9 knappar
 		// knapparna Ã¤r lagrad i arrayen knapp med variablen Jbutton som deklareras i bÃ¶rjan av programet
->>>>>>> branch 'master' of https://github.com/Falafeln/TicTacToe.git
+
 
 		titelPanel.add(textFalt);
 		ram.add(titelPanel, BorderLayout.NORTH);
