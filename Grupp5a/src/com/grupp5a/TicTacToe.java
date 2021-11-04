@@ -62,6 +62,7 @@ public class TicTacToe implements ActionListener {
 		}
 		
 		// Anv√§nde oss av for-lop f√∂r att g√∂ra 9 knappar
+		// knapparna √§r lagrad i arrayen knapp med variablen Jbutton som deklareras i b√∂rjan av programet
 
 		titelPanel.add(textFalt);
 		ram.add(titelPanel, BorderLayout.NORTH);
@@ -87,7 +88,7 @@ public class TicTacToe implements ActionListener {
 						knapp[i].setForeground(new Color(102, 0, 153));
 						knapp[i].setText("X");
 						spelare1_tur = false;
-						textFalt.setText("Spelare O, det ‰r din tur!");
+						textFalt.setText("Spelare O, det ÔøΩr din tur!");
 						kontrollera();
 						lika();
 					}
@@ -96,7 +97,7 @@ public class TicTacToe implements ActionListener {
 						knapp[i].setForeground(new Color(51, 204, 255));
 						knapp[i].setText("O");
 						spelare1_tur = true;
-						textFalt.setText("Spelare X, det ‰r din tur!");
+						textFalt.setText("Spelare X, det ÔøΩr din tur!");
 						kontrollera();
 						lika();
 					}
@@ -125,14 +126,14 @@ public class TicTacToe implements ActionListener {
 				knapp[i].setEnabled(true);
 			}
 			spelare1_tur = true;
-			textFalt.setText("Spelare X, det ‰r din tur!");
+			textFalt.setText("Spelare X, det ÔøΩr din tur!");
 
 		} else {
 			for (int i = 0; i < 9; i++) {
 				knapp[i].setEnabled(true);
 			}
 			spelare1_tur = false;
-			textFalt.setText("Spelare O, det ‰r din tur!");
+			textFalt.setText("Spelare O, det ÔøΩr din tur!");
 		}
 
 	}
