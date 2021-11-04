@@ -19,11 +19,11 @@ public class TicTacToe implements ActionListener {
 	JButton[] knapp = new JButton[9];
 	boolean spelare1_tur;
 
-	// Alla variabler som anvÃ¤nds udner programets kÃ¶rning
+	// Alla variabler som används under programmets körning
 	
 	TicTacToe() {
 		
-		// Tillverkar spelbrÃ¤dan 
+		// Tillverkar spelbrädan 
 
 		ram.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ram.setSize(800, 800);
@@ -31,7 +31,7 @@ public class TicTacToe implements ActionListener {
 		ram.setLayout(new BorderLayout());
 		ram.setVisible(true);
 		
-		// Gjort ramen fÃ¶r Jframe
+		// Gjort ramen för Jframe
 
 		textFalt.setBackground(new Color(25, 25, 25));
 		textFalt.setForeground(new Color(255, 153, 0));
@@ -40,17 +40,17 @@ public class TicTacToe implements ActionListener {
 		textFalt.setText("Tic-Tac-Toe");
 		textFalt.setOpaque(true);
 		
-		// Gjort textfÃ¤ltet fÃ¶r spelet
+		// Gjort textfältet för spelet
 
 		titelPanel.setLayout(new BorderLayout());
 		titelPanel.setBounds(0, 0, 800, 100);
 		
-		// Gjort rutan fÃ¶r textrutan
+		// Gjort rutan för textrutan
 
 		knappPanel.setLayout(new GridLayout(3, 3));
 		knappPanel.setBackground(new Color(204, 204, 204));
 			
-		// Gjort knapprutan, anvÃ¤nde GridLayout fÃ¶r att fÃ¥ ett spelfÃ¤lt som Ã¤r 3x3
+		// Gjort knapprutan, använde GridLayout för att få ett spelfält som är 3x3
 
 		for (int i = 0; i < 9; i++) {
 			knapp[i] = new JButton();
@@ -61,13 +61,13 @@ public class TicTacToe implements ActionListener {
 			knapp[i].setBackground(new Color (40,45,45));
 		}
 		
-		// AnvÃ¤nde oss av for-lop fÃ¶r att gÃ¶ra 9 knappar
+		// Använde oss av for-lop för att göra 9 knappar
 
 		titelPanel.add(textFalt);
 		ram.add(titelPanel, BorderLayout.NORTH);
 		ram.add(knappPanel);
 		
-		// LÃ¤gger in allt i Jframe, anvÃ¤nde BorderLayout.NORTH fÃ¶r att fÃ¥ titelpanelen ovanfÃ¶rknapparna 
+		// LÃgger in allt i Jframe, använde BorderLayout.NORTH för att få titelpanelen ovanför knapparna 
 
 		forstaRundan();
 
@@ -75,10 +75,10 @@ public class TicTacToe implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		
-		/* AnvÃ¤nder oss av ActionLisener fÃ¶r att se vilken knapp anvÃ¤ndarna trycker pÃ¥.
- 	   	*  Lopar igenom knapparna fÃ¶r att ta fram vilken spelare det var som tryckte och pÃ¥ vilken knapp dom tryckte pÃ¥.
-		*  Kollar Ã¤ven sÃ¥ att ingen spelare redan har lagt pÃ¥ rutan som anvÃ¤ndaren trycker pÃ¥.
-		*  AnvÃ¤nder Ã¤ven blooean spelare1_tur fÃ¶r att byta mellan spelare 1 och 2 omgÃ¥ng. */
+		/* Använder oss av ActionLisener får att se vilken knapp användarna trycker på.
+ 	   	*  Lopar igenom knapparna får att ta fram vilken spelare det var som tryckte och på vilken knapp dom tryckte på.
+		*  Kollar även så att ingen spelare redan har lagt på rutan som användaren trycker på.
+		*  Använder även blooean spelare1_tur får att byta mellan spelare 1 och 2 omgång. */
 
 		for (int i = 0; i < 9; i++) {
 			if (e.getSource() == knapp[i]) {
@@ -108,7 +108,7 @@ public class TicTacToe implements ActionListener {
 
 	public void forstaRundan() {
 		
-		// Tar fram vem som fÃ¥r bÃ¶rja, anvÃ¤nder oss av Random.
+		// Tar fram vem som får börja, använder oss av Random.
 		for (int i = 0; i < 9; i++) {
 			knapp[i].setEnabled(false);
 		}
@@ -118,7 +118,7 @@ public class TicTacToe implements ActionListener {
 			e.printStackTrace();
 		}
 		
-		// Har en .sleep sÃ¥ man hinner se vad det Ã¤r man spelar innan vi anger vilken spelare som bÃ¶rjar.
+		// Har en .sleep så man hinner se vad det är man spelar innan vi anger vilken spelare som börjar.
 
 		if (random.nextInt(2) == 0) {
 			for (int i = 0; i < 9; i++) {
@@ -139,8 +139,8 @@ public class TicTacToe implements ActionListener {
 
 	public void kontrollera() {
 		
-		// Kollar om nÃ¥n har vunnit.
-		// AnvÃ¤nder oss av getText fÃ¶r att fÃ¥ Char fÃ¶r varje ruta och kollar pÃ¥ sÃ¥ sÃ¤tt om nÃ¥n av spelarna har vunnit.
+		// Kollar om någon har vunnit.
+		// Använder oss av getText för att få Char för varje ruta och kollar på så sätt om någon av spelarna har vunnit.
 		
 		if ((knapp[0].getText() == "X") && (knapp[1].getText() == "X") && (knapp[2].getText() == "X")) {
 			xVinner(0, 1, 2);
@@ -193,7 +193,7 @@ public class TicTacToe implements ActionListener {
 				xVinner(2,4,6);
 					
 				}
-		// kollat om X har vunnit, forstÃ¤tter med O.
+		// kollat om X har vunnit, fortsätter med O.
 
 		if ((knapp[0].getText() == "O") && (knapp[1].getText() == "O") && (knapp[2].getText() == "O")) {
 			oVinner(0, 1, 2);
@@ -252,7 +252,7 @@ public class TicTacToe implements ActionListener {
 
 	public void xVinner(int a, int b, int c) {
 		
-		// Om X har vunnit sÃ¥ byter vi fÃ¤rg pÃ¥ den/dom vinnande raderna sÃ¥ man lÃ¤tt ser vart spelarn har vunnit.
+		// Om X har vunnit så byter vi färg på den/dom vinnande raderna så man lätt ser vart spelaren har vunnit.
 		
 		knapp[a].setBackground(new Color(102,255,102));
 		knapp[b].setBackground(new Color(102,255,102));
@@ -267,7 +267,7 @@ public class TicTacToe implements ActionListener {
 
 	public void oVinner(int a, int b, int c) {
 		
-		// Om O har vunnit sÃ¥ byter vi fÃ¤rg pÃ¥ den/dom vinnande raderna sÃ¥ man lÃ¤tt ser vart spelarn har vunnit.
+		// Om O har vunnit så byter vi färg på den/dom vinnande raderna så man lätt ser vart spelaren har vunnit.
 		
 		knapp[a].setBackground(new Color(102,255,102));
 		knapp[b].setBackground(new Color(102,255,102));
@@ -281,8 +281,8 @@ public class TicTacToe implements ActionListener {
 	}
 	public void lika() {
 		
-		// Lopar igenom alla knappar fÃ¶r att se om dom Ã¤r anvÃ¤nda.
-		// Om alla knappar Ã¤r anvÃ¤nda och ingen har vunnit sÃ¥ Skriver vi ut att spelet blev lika
+		// Loopar igenom alla knappar för att se om dom är använda.
+		// Om alla knappar Är använda och ingen har vunnit så Skriver vi ut att spelet blev lika
 		
 		int lika = 0;
 		for (int i = 0; i < 9; i++) {
